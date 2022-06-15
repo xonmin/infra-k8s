@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: infra-app
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: infra-app
+  template:
+    metadata:
+      labels:
+        app: infra-app
+    spec:
+      containers:
+        - image: han51361/infra-app:latest
+          name: guestbook-ui
+          ports:
+            - containerPort: 8080
